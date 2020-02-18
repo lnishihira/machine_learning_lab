@@ -20,4 +20,7 @@ for category in categories:
     plt.ylabel('sales')
     plt.legend()
 
+print(orders.loc[orders['Profit'] < 0].groupby(orders['Order.Date'].dt.year)['Profit'].sum())
+repeat_returns = orders.loc[orders['Profit'] < 0].groupby('Customer.Name').filter( lambda x: x.shape[0] >5)
+print(repeat_returns['Customer.Name'].nunique())
 
